@@ -1,0 +1,73 @@
+{
+    "name": "sixincode/hive-newsletter",
+    "description": "hive-newsletter package",
+    "keywords": [
+        "sixincode",
+        "laravel",
+        "hive-newsletter"
+    ],
+    "homepage": "https://github.com/sixincode/hive-newsletter",
+    "license": "MIT",
+    "authors": [
+        {
+            "name": "sixincode",
+            "email": "sixincode@6ixin.com",
+            "role": "Developer"
+        }
+    ],
+    "require": {
+        "php": "^8.1",
+        "illuminate/contracts": "^10.0",
+        "sixincode/hive-alpha": "dev-main",
+        "sixincode/hive-display": "dev-main",
+        "sixincode/modules-init": "dev-main"
+    },
+    "require-dev": {
+        "laravel/pint": "^1.0",
+        "nunomaduro/collision": "^7.9",
+        "nunomaduro/larastan": "^2.0.1",
+        "orchestra/testbench": "^7.7|^8.0",
+        "pestphp/pest": "^2.0",
+        "pestphp/pest-plugin-arch": "^2.0",
+        "pestphp/pest-plugin-laravel": "^2.0",
+        "phpstan/extension-installer": "^1.1",
+        "phpstan/phpstan-deprecation-rules": "^1.0",
+        "phpstan/phpstan-phpunit": "^1.0",
+        "spatie/laravel-ray": "^1.26"
+    },
+    "autoload": {
+        "psr-4": {
+            "Sixincode\\HiveNewsletter\\": "src",
+            "Sixincode\\HiveNewsletter\\Database\\Factories\\": "database/factories"
+        },
+        "files": [
+            "src/helpers.php"
+        ]
+    },
+    "autoload-dev": {
+        "psr-4": {
+            "Sixincode\\HiveNewsletter\\Tests\\": "tests"
+        }
+    },
+    "scripts": {
+        "analyse": "vendor/bin/phpstan analyse",
+        "test": "vendor/bin/pest",
+        "test-coverage": "vendor/bin/pest --coverage",
+        "format": "vendor/bin/pint"
+    },
+    "config": {
+        "sort-packages": true
+    },
+    "extra": {
+        "laravel": {
+            "providers": [
+                "Sixincode\\HiveNewsletter\\HiveNewsletterServiceProvider"
+            ],
+            "aliases": {
+                "HiveNewsletter": "Sixincode\\HiveNewsletter\\Facades\\HiveNewsletter"
+            }
+        }
+    },
+    "minimum-stability": "dev",
+    "prefer-stable": true
+}
