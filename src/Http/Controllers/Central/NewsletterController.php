@@ -13,14 +13,14 @@ class NewsletterController extends Controller
   public function index()
   {
     $newsletters = Newsletter::all();
-    return view('hive-newsletters::central.newsletters.indexNewsletter',[
+    return view('hive-newsletter::central.newsletters.indexNewsletter',[
         'newsletters' => $newsletters,
     ]);
   }
 
-  public function show(Request $request, Newsletter $newsletter)
+  public function show(Request $request,  Newsletter $newsletter)
   {
-      return view('hive-newsletters::central.newsletters.showNewsletter',[
+      return view('hive-newsletter::central.newsletters.showNewsletter',[
         'newsletter' => $newsletter,
       ]);
   }

@@ -33,7 +33,7 @@ class HiveNewsletterServiceProvider extends PackageServiceProvider
             // ->runsMigrations()
             ->hasCommand(HiveNewsletterCommand::class);
 
-            $this->registerHiveNewsletterDatabaseMethods();
+          $this->registerHiveNewsletterDatabaseMethods();
     }
 
     private function registerHiveNewsletterDatabaseMethods(): void

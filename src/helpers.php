@@ -6,11 +6,11 @@
       }
   }
 
-  function check_newsletterSubscriptionEmailVerification()
+  function check_hasNewsletterSubscriptionEmailVerificationRequest()
   {
-    if(function_exists('newsletterSubscriptionEmailVerification')) {
-        return newsletterSubscriptionEmailVerification();
+    if(function_exists('hasNewsletterSubscriptionEmailVerificationRequest')) {
+        return hasNewsletterSubscriptionEmailVerificationRequest();
     }else{
-        return config('hive-newsletter.emailVerification');
+        return config('hive-newsletter.emailVerificationRequired');
     }
   }

@@ -10,6 +10,7 @@ use Illuminate\Support\Carbon;
 use Illuminate\Support\Facades\Config;
 use Illuminate\Support\Facades\Log;
 use Illuminate\Support\Facades\URL;
+use Illuminate\Support\Facades\Lang;
 
 class SubscriberEmailVerification extends Notification
 {
@@ -48,12 +49,12 @@ class SubscriberEmailVerification extends Notification
 
       $mail = new MailMessage();
 
-      $mail->subject(__('hive-newsletters.mail.verify_email.subjet'));
-      $mail->subject(__('hive-newsletters.mail.verify_email.greeting'));
-      $mail->line(__('hive-newsletters.mail.verify_email.body'));
-      $mail->line(__('hive-newsletters.mail.verify_email.lead'));
-      $mail->action(__('hive-newsletters.mail.verify_email.action'), $verificationUrl);
-      $mail->line(__('hive-newsletters.mail.verify_email.footer'));
+      $mail->subject(Lang::get(__('hive-newsletter.mail.verify_email.subjet')));
+      $mail->subject(Lang::get(__('hive-newsletter.mail.verify_email.greeting')));
+      $mail->line(Lang::get(__('hive-newsletter.mail.verify_email.body')));
+      $mail->line(Lang::get(__('hive-newsletter.mail.verify_email.lead')));
+      $mail->action(Lang::get(__('hive-newsletter.mail.verify_email.action')), $verificationUrl);
+      $mail->line(Lang::get(__('hive-newsletter.mail.verify_email.footer')));
 
       return $mail;
   }
@@ -80,13 +81,14 @@ class SubscriberEmailVerification extends Notification
   protected function verificationUrl($notifiable)
   {
       return URL::temporarySignedRoute(
-          'subscribers.verify',
-          Carbon::now()->addMinutes(config('hive-newsletters.verificationLinkExpiration')),
-          [
-              'id'   => $notifiable->getGlobalKey(),
-              'hash' => sha1($notifiable->getEmailForVerification()),
-          ]
-      );
+            'newsletters.central.verify',
+            Carbon::now()->addMinutes(config('hive-newsletters.verificationLinkExpiration')),
+            [
+                'id'      => sha1($notifiable->getKey()),
+                'hash'    => sha1($notifiable->getEmailForVerification()),
+                'global'  => $notifiable->getGlobalKey(),
+            ]
+        );
   }
 
 }

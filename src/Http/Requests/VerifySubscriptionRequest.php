@@ -16,19 +16,19 @@ class VerifySubscriptionRequest extends FormRequest
   public function rules()
   {
     return [
-      'email' => 'required|email|exists:Sixincode\HiveNewsletter\Models\NewsletterSubscription,email',
-      'newsletter' => 'required|string|exists:Sixincode\HiveNewsletter\Models\Newsletter,slug',
+      // 'email' => 'required|email|exists:Sixincode\HiveNewsletter\Models\NewsletterSubscription,email',
+      // 'newsletter' => 'required|string|exists:Sixincode\HiveNewsletter\Models\Newsletter,slug',
     ];
   }
 
-  public function newsletter()
+  public function newsletterSlug()
   {
-    return Newsletter::where('slug', $this->input('newsletter'))->firstOrFail();
+    return $this->subscription()->newsletter()->first()->slug;
   }
 
   public function subscription()
   {
-    return NewsletterSubscription::whereEmail( $this->input('email'))->where('newsletter_id', $this)->firstOrFail();
+    return NewsletterSubscription::whereGlobal($this->route('global'))->firstOrFail();
   }
 
   public function handle($request, Closure $next)

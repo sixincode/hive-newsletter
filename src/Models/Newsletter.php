@@ -3,7 +3,8 @@
 namespace Sixincode\HiveNewsletter\Models;
 
 use Sixincode\HiveNewsletter\Traits\IsNewsletter;
-use Sixincode\HiveNewsletter\Factories\NewsletterFactory;
+use Sixincode\HiveNewsletter\Database\Factories\NewsletterFactory;
+use Illuminate\Database\Eloquent\Factories\HasFactory;
 use Sixincode\HiveAlpha\Traits\HiveModelTraits;
 use Sixincode\HivePosts\Traits as HivePostsTraits;
 use Sixincode\HiveHelpers\Traits as HelperTraits;
@@ -19,23 +20,20 @@ class Newsletter extends IsNewsletter
   use HelperTraits\IsFeaturedTrait;
   use HelperTraits\IsPrivateTrait;
   use HelperTraits\SortOrderTrait;
-  use HivePostsTraits\HasCategories;
-  use HivePostsTraits\HasTags;
+  // use HivePostsTraits\HasCategories;
+  // use HivePostsTraits\HasTags;
   use HasFactory;
 
-  protected $with = ['categories', 'tags'];
+  // protected $with = ['categories', 'tags'];
 
-  public function __construct()
-  {
-    parent::__construct();
-    $this->filterable[] = 'url';
-    $this->fillable[] = 'url';
-    $this->appends[] = 'short_name';
-  }
-
-  public $translatable = [];
-  public $filterable = [];
-  public $orderable = [];
+  // protected static function bootNewsletter()
+  // {
+  //   parent::boot();
+  //   $this->filterable[] = 'url';
+  //   $this->fillable[] = 'url';
+  //   $this->appends[] = 'short_name';
+  // }
+  // protected $guarded = [];
 
   public function getTable()
   {
@@ -67,7 +65,7 @@ class Newsletter extends IsNewsletter
 
   public static function slugOriginElement()
   {
-    return 'name'.now();
+    return 'name';
   }
 
   public function getRouteKeyName()

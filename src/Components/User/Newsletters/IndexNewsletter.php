@@ -10,14 +10,14 @@ class IndexNewsletter extends Component
   public $newsletters;
 
   public function __construct(
-    //
+    $newsletters = []
     )
   {
-    $this->newsletter = Newsletter::all();
+    $this->newsletters = $newsletters;
   }
 
   public function render()
   {
-    return view('hive-newsletter::components.user.newsletters.indexNewsletter');
+    return view('hive-newsletter::components.user.newsletters.indexUserNewsletter');
   }
 }

@@ -6,7 +6,7 @@ return [
   'title'             => 'hive-newsletter',
   'slogan'            => 'This is hive-newsletter.',
 
-  'emailVerification'          => true,
+  'emailVerificationRequired'  => true,
   'verificationLinkExpiration' => 1440, // in minutes
 
   // table names

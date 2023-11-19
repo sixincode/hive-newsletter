@@ -16,7 +16,7 @@ class StoreSubscriptionRequest extends FormRequest
   {
     return [
       'email' => 'required|email',
-      'newsletter' => 'required|string|exists:Sixincode\HiveNewsletter\Models\Newsletter,slug',
+      // 'newsletter' => 'required|string|exists:Sixincode\HiveNewsletter\Models\Newsletter,slug',
     ];
   }
 

@@ -10,7 +10,7 @@ class ShowNewsletter extends Component
   public Newsletter $newsletter;
 
   public function mount(
-     Newsletter $newsletter;
+     Newsletter $newsletter
     )
   {
     $this->newsletter = $newsletter;

@@ -5,6 +5,8 @@ namespace Sixincode\HiveNewsletter\Traits;
 use Illuminate\Database\Eloquent\Model;
 use Sixincode\HiveHelpers\Traits as HelperTraits;
 use Illuminate\Database\Eloquent\Relations\HasMany;
+use Sixincode\HiveNewsletter\Models\NewsletterInvitation;
+use Sixincode\HiveNewsletter\Models\NewsletterSubscription;
 
 abstract class IsNewsletter extends Model
 {
@@ -22,16 +24,12 @@ abstract class IsNewsletter extends Model
 
   public function subscriptions():HasMany
   {
-      return $this->hasMany( NewsletterSubscription::class, 'newsletter_id', 'id')
-                  ->withPivot('email_verified_at','properties')
-                  ->withTimestamps();
+      return $this->hasMany( NewsletterSubscription::class, 'newsletter_id', 'id');
   }
 
   public function invitations():HasMany
   {
-      return $this->hasMany( NewsletterInvitation::class, 'newsletter_id', 'id')
-                  ->withPivot('email')
-                  ->withTimestamps();
+      return $this->hasMany( NewsletterInvitation::class, 'newsletter_id', 'id');
   }
 
   public function users()

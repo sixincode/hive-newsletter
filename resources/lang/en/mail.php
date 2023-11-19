@@ -8,7 +8,7 @@ return [
         'Thank you for subscribing,',
         'Please click the button below to verify your email address.',
       ],
-      'lead'    => 'Verify Email Address',
+      'lead'      => 'Verify Email Address',
       'action'    => 'Verify Email Address',
       'footer'    => 'If you did not sign up for our newsletter, no further action is required.',
   ],

@@ -1,3 +1,9 @@
 <div class="">
-  <x-hive-newsletter-user-newsletters-index newsletters='$newsletters'/>
+  <h1 class="text-xl font-semibold">{{ _('Newsletters') }}</h1>
+  <hr class="my-6">
+  <div class="grid sm:grid-cols-2 lg:grid-cols-3 gap-8">
+    @foreach($newsletters as $newsletter)
+      <x-hive-newsletter-user-newsletter :newsletter='$newsletter'/>
+    @endforeach
+  </div>
 </div>

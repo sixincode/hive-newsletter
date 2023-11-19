@@ -10,7 +10,7 @@ class SettingsNewsletterController extends Controller
 
   public function index()
   {
-    return view('hive-newsletters::user.settings.indexUserSettings');
+    return view('hive-newsletter::user.settings.indexUserSettings');
   }
 
 }

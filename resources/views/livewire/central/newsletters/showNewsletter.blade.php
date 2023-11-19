@@ -1,3 +1,3 @@
 <div class="">
-  <x-hive-newsletter-central-newsletters-display newsletter='$newsletter'/>
+  <x-hive-newsletter-central-newsletters-show :newsletter='$newsletter'/>
 </div>

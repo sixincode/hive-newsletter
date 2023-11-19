@@ -40,11 +40,12 @@ trait HiveNewsletterDatabaseDefinitions
   public static function addNewsletterSubscriptionsFields(Blueprint $table, $properties =[]): void
   {
     $table->id();
-    $table->foreignId('newsletter_id');
+    $table->foreignId('newsletter_id')->constrained()->cascadeOnDelete();
     // $table->string('role')->nullable();
     $table->string('email');
     $table->isActiveField();
     $table->timestamp('email_verified_at')->nullable();
+    $table->globalField();
     $table->propertiesSchemaField();
     $table->dataSchemaField();
     $table->softDeletes();

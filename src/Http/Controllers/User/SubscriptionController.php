@@ -11,7 +11,7 @@ class SubscriptionController extends Controller
 
   public function index()
   {
-    return view('hive-newsletters::user.subscriptions.indexUserSubscription',[
+    return view('hive-newsletter::user.subscriptions.indexUserSubscription',[
         'subscriptions' => auth()->user()->subscriptions()->get(),
     ]);
   }
@@ -19,7 +19,7 @@ class SubscriptionController extends Controller
   public function show(Request $request, $subscription)
   {
     $subscription = auth()->user()->subscriptions()->where('slug', $subscription)->first();
-    return view('hive-newsletters::user.subscriptions.showUserSubscription',[
+    return view('hive-newsletter::user.subscriptions.showUserSubscription',[
         'subscription' => $subscription,
     ]);
   }

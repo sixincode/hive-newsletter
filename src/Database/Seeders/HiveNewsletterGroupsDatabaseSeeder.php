@@ -10,6 +10,7 @@ use App\Models\User;
 // use Sixincode\HivePosts\Models\Tag;
 use Sixincode\HiveNewsletter\Models\Newsletter;
 use Sixincode\HiveNewsletter\Models\NewsletterSubscription;
+use Sixincode\HiveNewsletter\Models\NewsletterInvitation;
 use Illuminate\Database\Eloquent\Factories\Sequence;
 
 /**
@@ -21,18 +22,19 @@ class HiveNewsletterGroupsDatabaseSeeder extends Seeder
 
   public function run()
   {
-    $faker = \Faker\Factory::create();
-    $fakerFR = \Faker\Factory::create('fr_FR');
-
     $users = User::all();
-    $categories = Category::all();
-    $tags = Tag::all();
-
-    $newsletters = Newsletter::factory()->count(80)->for(
-        User::factory(), 'owner'
-    )->has(NewsletterSubscription::factory()->count(16), 'subscriptions')
-     ->has(NewsletterInvitationTrait::factory()->count(6), 'invitations')
-     ->create();
+    foreach($users as $user) {
+      $newsletters = Newsletter::factory()->for(
+            $user, 'owner'
+        )->hasSubscriptions(6,function (array $attributes, Newsletter $newsletter) {
+                    return ['newsletter_id' => $newsletter->id];
+                })
+         ->hasInvitations(4,function (array $attributes, Newsletter $newsletter) {
+                    return ['newsletter_id' => $newsletter->id];
+               })
+        ->count(4)
+        ->create();
+    }
 
     // foreach(range(0, 28)  as $key => $value) {
     //     $post = Model::create([
@@ -50,6 +52,4 @@ class HiveNewsletterGroupsDatabaseSeeder extends Seeder
     //      $post->categories()->syncWithoutDetaching($categories->random(4));
     //      $post->attachTags($tags->random(8));
    }
-
-  }
 }

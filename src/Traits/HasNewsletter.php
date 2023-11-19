@@ -17,7 +17,7 @@ trait HasNewsletter
         'email_verified_at'  => ($active && !check_newsletterSubscriptionEmailVerification()) ? now() : null,
       ]);
 
-      if (check_newsletterSubscriptionEmailVerification())) {
+      if (check_newsletterSubscriptionEmailVerification()) {
           $subscription->sendEmailVerificationNotification();
       }
   }

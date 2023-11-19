@@ -6,11 +6,15 @@ use Sixincode\HiveNewsletter\Http\Livewire   as Livewires;
 // config for Sixincode/HiveNewsletter Components
 return [
  'blade' => [
+   'central-newsletter'            => Components\Newsletters\Central\Newsletter::class,
+   'user-newsletter'               => Components\Newsletters\User\Newsletter::class,
+   'user-newsletter-subscriber'    => Components\Newsletters\User\NewsletterSubscriber::class,
    'central-newsletters-index'     => Components\Central\Newsletters\IndexNewsletter::class,
-   'central-newsletters-display'   => Components\Central\Newsletters\DisplayNewsletter::class,
+   'central-newsletters-show'      => Components\Central\Newsletters\ShowNewsletter::class,
 
    'user-newsletters-index'        => Components\User\Newsletters\IndexNewsletter::class,
-   'user-newsletters-display'      => Components\User\Newsletters\DisplayNewsletter::class,
+   'user-newsletters-create'       => Components\User\Newsletters\CreateNewsletter::class,
+   'user-newsletters-show'         => Components\User\Newsletters\ShowNewsletter::class,
    'user-subscribers-display'      => Components\User\Subscribers\DisplaySubscriber::class,
    'user-subscriptions-display'    => Components\User\Subscription\DisplaySubscription::class,
   ],
@@ -23,6 +27,7 @@ return [
    /////////////////////////////////// USER /////////////////////////////////////////////////////////////////
 
    'user-newsletters-index'      => Livewires\User\Newsletters\IndexUserNewsletter::class,
+   'user-newsletters-create'       => Livewires\User\Newsletters\CreateUserNewsletter::class,
    'user-newsletters-show'       => Livewires\User\Newsletters\ShowUserNewsletter::class,
    'user-newsletters-show-subscribers'       => Livewires\User\Newsletters\ShowUserNewsletterSubscribers::class,
 
