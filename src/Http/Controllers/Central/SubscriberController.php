@@ -15,23 +15,27 @@ use Sixincode\HiveNewsletter\Http\Requests\StoreSubscriptionRequest;
 use Sixincode\HiveNewsletter\Http\Requests\DeleteSubscriptionRequest;
 use Sixincode\HiveNewsletter\Http\Requests\VerifySubscriptionRequest;
 use Sixincode\HiveNewsletter\Exceptions\SubscriberVerificationException;
+use Sixincode\HiveNewsletter\Actions\SubscribeToNewsletter;
 
 class SubscriberController extends Controller
 {
-  public function store(StoreSubscriptionRequest $request, Newsletter $newsletter)
+  public function store(StoreSubscriptionRequest $request, Newsletter $newsletter, SubscribeToNewsletter $creator)
   {
-      $subscription = NewsletterSubscription::create([
-        'email'              => $request['email'],
-        'newsletter_id'      => $newsletter->id,
-        'is_active'          => $newsletter->request_verification,
-        'email_verified_at'  => ($newsletter->request_verification && !check_hasNewsletterSubscriptionEmailVerificationRequest()) ? now() : null,
-      ]);
+      // $subscription = NewsletterSubscription::create([
+      //   'email'              => $request['email'],
+      //   'newsletter_id'      => $newsletter->id,
+      //   'is_active'          => $newsletter->request_verification,
+      //   'email_verified_at'  => ($newsletter->request_verification && !check_hasNewsletterSubscriptionEmailVerificationRequest()) ? now() : null,
+      // ]);
+      //
+      // if(check_hasNewsletterSubscriptionEmailVerificationRequest()) {
+      //     $subscription->sendEmailVerificationNotification();
+      //     return redirect()->route('newsletters.central.show', $newsletter->slug)
+      //         ->with('subscribed', __('hive-newsletters.main.notifications.verify'));
+      // }
 
-      if(check_hasNewsletterSubscriptionEmailVerificationRequest()) {
-          $subscription->sendEmailVerificationNotification();
-          return redirect()->route('newsletters.central.show', $newsletter->slug)
-              ->with('subscribed', __('hive-newsletters.main.notifications.verify'));
-      }
+      $subscription =  $creator->create($newsletter, $request);
+
 
       return redirect()->route('newsletters.central.show', $newsletter->slug)
                        ->with('subscribed', __('hive-newsletters.main.notifications.subscribed'));

@@ -13,10 +13,12 @@ return [
 
   // columns
   'defaultViews'      => [
-    'newslettersSourceCentral'     => 'newsletters.central',
-    'newslettersSourceUser'        => 'newsletters.user',
-    'defaultNewsletterUser'        => 'defaultNewsletterUser',
-    'defaultNewsletterSubscriberUser'        => 'defaultNewsletterSubscriberUser',
-    'defaultNewsletterCentral'     => 'defaultNewsletterCentral',
+    'newslettersSourceCentral'            => 'newsletters.central',
+    'newslettersDisplaySourceCentral'     => 'newsletters.central.display',
+    'newslettersSourceUser'               => 'newsletters.user',
+    'defaultNewsletterUser'               => 'defaultNewsletterUser',
+    'defaultNewsletterSubscriberUser'     => 'defaultNewsletterSubscriberUser',
+    'defaultNewsletterCentral'            => 'defaultNewsletterCentral',
+    'defaultDisplayNewsletterCentral'     => 'defaultDisplayNewsletterCentral',
   ],
 ];

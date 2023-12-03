@@ -8,9 +8,9 @@ use Illuminate\Database\Eloquent\Collection;
 
 class IndexNewsletter extends Component
 {
-    public Collection $newsletters;
+    public $newsletters;
 
-    public function mount($newsletters = [])
+    public function mount(Collection $newsletters)
     {
       $this->newsletters = $newsletters;
     }

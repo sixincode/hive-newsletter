@@ -7,7 +7,9 @@ use Sixincode\HiveNewsletter\Http\Livewire   as Livewires;
 return [
  'blade' => [
    'central-newsletter'            => Components\Newsletters\Central\Newsletter::class,
+   'newsletter-display'            => Components\Newsletters\Central\DisplayNewsletter::class,
    'user-newsletter'               => Components\Newsletters\User\Newsletter::class,
+
    'user-newsletter-subscriber'    => Components\Newsletters\User\NewsletterSubscriber::class,
    'central-newsletters-index'     => Components\Central\Newsletters\IndexNewsletter::class,
    'central-newsletters-show'      => Components\Central\Newsletters\ShowNewsletter::class,
@@ -22,7 +24,8 @@ return [
     ///////////////////////////////// CENTRAL  ///////////////////////////////////////////////////////////////
 
    'central-newsletters-index'     => Livewires\Central\Newsletters\IndexNewsletter::class,
-   'central-newsletters-show'      => Livewires\Central\Newsletters\ShowNewsletter::class,
+   // 'central-newsletters-show'      => Livewires\Central\Newsletters\ShowNewsletter::class,
+   'central-newsletter-display'    => Livewires\Central\Newsletters\DisplayNewsletter::class,
 
    /////////////////////////////////// USER /////////////////////////////////////////////////////////////////
 

@@ -97,7 +97,7 @@ trait HasNewsletter
    */
   public function ownedNewsletters() :MorphMany
   {
-      return $this->morphMany(Newsletter::class, 'owner');
+      return $this->morphMany(Newsletter::class, 'owner'); 
   }
 
   /**

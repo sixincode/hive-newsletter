@@ -17,6 +17,12 @@ trait HiveNewsletterSeedersTrait
 
   public function seed(): void
   {
+    $seeder = new Seeders\HiveNewsletterDefaultDatabaseSeeder;
+    $seeder->run();
+  }
+
+  public function seedDemo(): void
+  {
     $seeder = new Seeders\HiveNewsletterDatabaseSeeder;
     $seeder->run();
   }
