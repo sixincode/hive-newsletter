@@ -10,7 +10,7 @@
 <x-hive-display-section component='boxedXSection' class='p-0'>
 <div {{ $attributes->merge(['class' => $class.' flex p-4 md:p-6 items-center justify-center w-full']) }}>
   <form wire:submit="{{ $route }}" class="max-w-2xl mx-auto w-full">
-    <div class="px-4 py-5 bg-white dark:bg-gray-800 sm:p-6 rounded">
+    <div class="px-4 py-5 bg-white  sm:p-6 rounded">
       <div class="">
         @if(isset($actions))
             <div class="flex items-center justify-center my-2">
@@ -32,7 +32,7 @@
               </div>
               @endif
 
-              <div class="flex gap-x-4 mt-4">
+              <div class="md:flex gap-x-4 mt-4">
                <div class="flex-1">
                  <x-hive-form-input
                   id="email"
@@ -44,8 +44,9 @@
                   class="flex-auto flex-1 w-full"
                   wire:model="state.email"
                   />
-                </div>
                 <x-input-error for="state.email" class="mt-2" />
+
+                </div>
 
 
                 <x-hive-form-button tag="button" type="submit" color="{{$color}}" class="mt-2  group transition ease-in-out duration-200">

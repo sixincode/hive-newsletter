@@ -2,7 +2,7 @@
 'color'     => '',
 'component' => $component,
 ])
-  <x-hive-newsletter-newsletter-display component="{{$component}}" name="{{$newsletter->name}}" description="{{$newsletter->description}}" route="subscribeToNewsletter">
+  <x-hive-newsletter-newsletter-display component="{{$component}}" color="{{$color}}" name="{{$newsletter->name}}" description="{{$newsletter->description}}" route="subscribeToNewsletter">
         <x-slot name="form">
           <!--  -->
         </x-slot>
